@@ -1,0 +1,44 @@
+.superInput {
+    display: block;
+    width: 200px;
+    padding: 0 15px;
+    margin-bottom: 10px;
+    background: white;
+    line-height: 30px;
+    border: 1px solid black;
+    border-radius: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.superInput:focus {
+    box-shadow: 0 0 2px black;
+}
+
+.superInput:hover {
+    box-shadow: 0 0 2px black;
+}
+
+.errorInput {
+    border: 1px solid #ec7b7c;
+    display: block;
+    width: 200px;
+    padding: 0 15px;
+    margin-bottom: 10px;
+    background: white;
+    line-height: 30px;
+    border-radius: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.errorInput:focus {
+    box-shadow: 0 0 2px #E9EFF6;
+}
+
+.errorInput:hover {
+    box-shadow: 0 0 2px #E9EFF6;
+}
+
+.error {
+    margin-bottom: 10px;
+    color: red;
+}

@@ -1,0 +1,25 @@
+.error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 34px;
+    height: 600px;
+}
+
+.errorNumber {
+    margin-bottom: 20px;
+
+}
+
+.errorMessage {
+    margin-bottom: 20px;
+
+}
+
+.errorCat {
+    margin-bottom: 20px;
+
+}

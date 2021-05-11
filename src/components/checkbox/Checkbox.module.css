@@ -1,0 +1,39 @@
+label {
+    margin-bottom: 10px;
+}
+
+.checkbox {
+    appearance: none;
+    position: relative;
+    height: 15px;
+    width: 15px;
+    transition: all 0.15s ease-out 0s;
+    background: #cbd1d8;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 0.5rem;
+    outline: none;
+    z-index: 1000;
+}
+.checkbox:hover {
+    background: #9faab7;
+}
+.checkbox:checked {
+    background: #246cf8;
+}
+.checkbox:checked::before {
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    content: '✔';
+    display: inline-block;
+    font-size: 12.66667px;
+    text-align: center;
+    line-height: 15px;
+}
+
+.spanClassName {
+
+}

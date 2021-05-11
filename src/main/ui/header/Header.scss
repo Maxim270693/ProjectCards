@@ -1,0 +1,33 @@
+.headerBlock {
+
+  position: fixed;
+  height: 50px;
+  width: 100%;
+  top: 0;
+  background-color: #3d7ec0;
+  display: flex;
+  justify-content: center;
+
+  &__navBar {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    height: 100%;
+    align-items: center;
+
+    &-item {
+      box-sizing: border-box;
+      color: white;
+      height: 25px;
+      display: block;
+
+      &:hover {
+        border-bottom: 1px solid white;
+      }
+    }
+
+    &-active {
+      border-bottom: 1px solid white;
+    }
+  }
+}

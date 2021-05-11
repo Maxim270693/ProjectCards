@@ -1,0 +1,19 @@
+.login{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+ &__container {
+   display: flex;
+   flex-direction: column;
+}
+
+}
+
+.error {
+  color: red;
+}
+p{
+  margin: 0;
+}

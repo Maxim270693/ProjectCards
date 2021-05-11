@@ -1,0 +1,44 @@
+$cl: #000;
+
+.wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  h2 {
+    text-shadow: 1px 1px 3px black;
+  }
+
+  .input {
+    cursor: pointer;
+  }
+
+  .wrapper_btn_signIn {
+    border: none;
+    border-bottom: 1px solid black;
+    background: transparent;
+    font-size: 18px;
+  }
+  .btn {
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+  }
+  a {
+    color: $cl;
+  }
+  .btn:active {
+    text-shadow: 0 0 1px #000;
+    color: $cl;
+  }
+  .errors {
+    color: red;
+  }
+}
+
+
+
+

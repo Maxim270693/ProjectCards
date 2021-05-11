@@ -1,0 +1,19 @@
+.myButton {
+    background-color: white;
+    font-size: 16px;
+    color: coral;
+    width: 100px;
+    height: 30px;
+    font-weight: 700;
+    box-sizing: border-box;
+    border: 1px solid coral;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        color: white;
+        background-color: coral;
+    }
+}
+
