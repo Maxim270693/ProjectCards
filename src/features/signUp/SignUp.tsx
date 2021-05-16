@@ -64,7 +64,7 @@ const SignUp = () => {
     }
     // если зарегистрирован Redirect на Profile
     if (isRegister) {
-        return <Redirect to={PATH.PROFILE}/>
+        return <Redirect to={PATH.LOGIN}/>
     }
 
     return (

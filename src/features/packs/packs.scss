@@ -8,7 +8,12 @@
   #simple-board {
     width: 100%;
   }
-  .row0 {
+  #row0 {
     border: 1px solid red;
+  }
+  .page{
+    font-weight: bold;
+    color: red;
+    padding: 0 2px;
   }
 }

@@ -2,13 +2,11 @@ import {applyMiddleware, combineReducers, compose, createStore} from 'redux';
 import thunkMiddleware, {ThunkAction} from 'redux-thunk';
 import {authReducer} from './authReducer'
 import {AuthActionsTypes} from './auth-actions';
-import {decksReducer} from "./decks-reducer";
-import {cardsReducer} from "./cards-reducer";
+import {packsReducer} from "./packs-reducer";
 
 const rootReducer = combineReducers({
   user: authReducer,
-  decks: decksReducer,
-  cards: cardsReducer
+  decks: packsReducer
 })
 
 //@ts-ignore
