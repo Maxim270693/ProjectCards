@@ -1,11 +1,7 @@
 import axios from "axios"
 
 const instanceLocal = axios.create({
-    baseURL: 'http://localhost:7542/2.0/',
-    withCredentials: true
-})
-
-const instanceHeroku = axios.create({
+    //baseURL: 'http://localhost:7542/2.0/',
     baseURL: 'https://neko-back.herokuapp.com/2.0',
     withCredentials: true
 })
@@ -137,7 +133,7 @@ export const authAPI = {
         return instanceLocal.put<{ updatedUser: AuthMeResponseType, error?: string }>('auth/me', updateMeObj)
     },
     recovery(email: string) {
-        return instanceHeroku.put<AuthResponseType>('auth/forgot', {
+        return instanceLocal.put<AuthResponseType>('auth/forgot', {
             email,
             from: "test-front-admin <ai73a@yandex.by>",
             message: `<div style="background-color: lime; padding: 15px"
@@ -146,7 +142,7 @@ export const authAPI = {
         }).then(res => res.data)
     },
     setNewPassword(newPasswordObj: NewPasswordObjType) {
-        return instanceHeroku.post<AuthResponseType>('auth/set-new-password', newPasswordObj).then(res => res.data)
+        return instanceLocal.post<AuthResponseType>('auth/set-new-password', newPasswordObj).then(res => res.data)
     }
 }
 
