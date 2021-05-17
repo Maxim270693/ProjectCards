@@ -11,17 +11,13 @@ import {
 } from "../../main/bll/packs-reducer";
 import {NavLink, Redirect} from "react-router-dom";
 import {PATH} from "../../main/ui/routes/Routes";
-import {CardsPacksType, CardsResponseType} from "../../main/dal/API";
+import { CardsResponseType} from "../../main/dal/API";
 import Spinner from "../../components/spinner/Spinner";
 
 export const Packs = () => {
     const dispatch = useDispatch()
-    // const {} = useSelector<RootStoreType,CardsResponseType>((state) => state.decks)
+    const {cardPacks,pageCount,cardPacksTotalCount,page} = useSelector<RootStoreType,CardsResponseType>((state) => state.decks)
     const isAuth = useSelector<RootStoreType, boolean>((state) => state.user.isAuth)
-    const cardPacks = useSelector<RootStoreType, CardsPacksType[]>((state) => state.decks.cardPacks)
-    const page = useSelector<RootStoreType, number>((state) => state.decks.page)
-    const pageCount = useSelector<RootStoreType, number>((state) => state.decks.pageCount)
-    const cardPacksTotalCount = useSelector<RootStoreType, number>((state) => state.decks.cardPacksTotalCount)
     const isLoading = useSelector<RootStoreType, boolean>((state) => state.user.isLoading)
 
 
@@ -52,7 +48,7 @@ export const Packs = () => {
                 ? <div className='wrapper'><Spinner/></div>
                 : <div className='wrapper_packs'>
                     {pages.map((p, index) => {
-                        let classes = page === p ? "page" : '';
+                        let classes = page === p ? "page" : 'page_number';
                         if (p === 1 || p === cardPacksTotalCount || (p >= page - 2 && p <= page + 2)) {
                             return (
                                 <span key={index}
