@@ -3,10 +3,12 @@ import thunkMiddleware, {ThunkAction} from 'redux-thunk';
 import {authReducer} from './authReducer'
 import {AuthActionsTypes} from './auth-actions';
 import {packsReducer} from "./packs-reducer";
+import {cardsReducer} from "./cards-reducer";
 
 const rootReducer = combineReducers({
   user: authReducer,
-  decks: packsReducer
+  decks: packsReducer,
+  cards: cardsReducer
 })
 
 //@ts-ignore

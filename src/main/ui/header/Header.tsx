@@ -10,7 +10,8 @@ const Header: React.FC = () => {
         {title: 'SignUp', link: PATH.SIGNUP},
         {title: 'TestPage', link: PATH.TESTPAGE},
         {title: 'Recovery', link: PATH.RECOVERY},
-        {title: 'Packs', link: PATH.PACKS}
+        {title: 'Packs', link: PATH.PACKS},
+        {title: 'Cards', link: PATH.CARDS}
     ]
     return (
         <div className='headerBlock'>

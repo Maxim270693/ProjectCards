@@ -9,7 +9,7 @@ import {
     setPacksTC,
     updateCardsPackTC
 } from "../../main/bll/packs-reducer";
-import {Redirect} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 import {PATH} from "../../main/ui/routes/Routes";
 import {CardsPacksType, CardsResponseType} from "../../main/dal/API";
 import Spinner from "../../components/spinner/Spinner";
@@ -33,10 +33,13 @@ export const Packs = () => {
         dispatch(addCardsPackTC())
     }
 
-    const pagesCount = Math.ceil(cardPacksTotalCount / pageCount)
     const pages = []
-    for (let i = 1; i <= pagesCount; i++) {
+    for (let i = 1; i <= Math.ceil(cardPacksTotalCount / pageCount); i++) {
         pages.push(i)
+    }
+
+    const nextPage = (page: number) => {
+        dispatch(changeCurrentPageAC(page + 1))
     }
 
     if (!isAuth) {
@@ -48,12 +51,24 @@ export const Packs = () => {
             {isLoading
                 ? <div className='wrapper'><Spinner/></div>
                 : <div className='wrapper_packs'>
-                    {pages.map((p, index) => <span key={index}
-                                                   className={page === p ? "page" : ''}
-                                                   onClick={() => {
-                                                       dispatch(changeCurrentPageAC(p))
-                                                   }}
-                    >{p + ' '}</span>)}
+                    {pages.map((p, index) => {
+                        let classes = page === p ? "page" : '';
+                        if (p === 1 || p === cardPacksTotalCount || (p >= page - 2 && p <= page + 2)) {
+                            return (
+                                <span key={index}
+                                      className={classes}
+                                      onClick={() => {
+                                          dispatch(changeCurrentPageAC(p))
+                                      }}
+                                >{p + ' '}</span>
+                            )
+                        }
+                    })}
+                    <button className="btn_pack"
+                            onClick={() => {
+                        nextPage(page)
+                    }}>next
+                    </button>
                     <h4>Packs page</h4>
                     <input type="checkbox"/>
                     <span>my packs</span>
@@ -73,12 +88,12 @@ export const Packs = () => {
                             </td>
                         </tr>
                         {
-                            cardPacks.map((card) => <tr key={card._id} >
-                                <td >{card.name}</td>
-                                <td >{card.cardsCount}</td>
-                                <td >{card.updated}</td>
-                                <td ></td>
-                                <td >
+                            cardPacks.map((card) => <tr key={card._id}>
+                                <td>{card.name}</td>
+                                <td>{card.cardsCount}</td>
+                                <td>{card.updated}</td>
+                                <td></td>
+                                <td>
                                     <button onClick={() => {
                                         dispatch(deleteCardsPackTC(card._id))
                                     }}>delete
@@ -87,7 +102,7 @@ export const Packs = () => {
                                         dispatch(updateCardsPackTC({_id: card._id, name: "Vasya"}))
                                     }}>update
                                     </button>
-                                    <a href={''}>cards</a>
+                                    <NavLink to={'/cards'}>cards</NavLink>
                                 </td>
                             </tr>)
                         }

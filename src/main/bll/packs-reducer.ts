@@ -98,7 +98,7 @@ export const updateCardsPackTC = (cardsPack: PutCardsPackType) => (dispatch:Thun
     dispatch(loadingSpinner(true))
     PackAPI.updatePack(cardsPack)
         .then((res) => {
-           // dispatch(setPacksAC(res.data.cardPacks))
+            dispatch(setPacksTC())
         })
         .finally(() => {
             dispatch(loadingSpinner(false))
