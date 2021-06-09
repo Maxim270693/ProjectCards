@@ -11,12 +11,17 @@ import {
 } from "../../main/bll/packs-reducer";
 import {NavLink, Redirect} from "react-router-dom";
 import {PATH} from "../../main/ui/routes/Routes";
-import { CardsResponseType} from "../../main/dal/API";
+import {CardsResponseType} from "../../main/dal/API";
 import Spinner from "../../components/spinner/Spinner";
 
 export const Packs = () => {
     const dispatch = useDispatch()
-    const {cardPacks,pageCount,cardPacksTotalCount,page} = useSelector<RootStoreType,CardsResponseType>((state) => state.decks)
+    const {
+        cardPacks,
+        pageCount,
+        cardPacksTotalCount,
+        page
+    } = useSelector<RootStoreType, CardsResponseType>((state) => state.decks)
     const isAuth = useSelector<RootStoreType, boolean>((state) => state.user.isAuth)
     const isLoading = useSelector<RootStoreType, boolean>((state) => state.user.isLoading)
 
@@ -62,13 +67,10 @@ export const Packs = () => {
                     })}
                     <button className="btn_pack"
                             onClick={() => {
-                        nextPage(page)
-                    }}>next
+                                nextPage(page)
+                            }}>next
                     </button>
                     <h4>Packs page</h4>
-                    <input type="checkbox"/>
-                    <span>my packs</span>
-                    <h4>Card packs</h4>
                     <table id="simple-board">
                         <tbody>
                         <tr id="row0">
@@ -84,13 +86,14 @@ export const Packs = () => {
                             </td>
                         </tr>
                         {
+                            /* здесь же имя карточки должно быть */
                             cardPacks.map((card) => <tr key={card._id}>
                                 <td>{card.name}</td>
                                 <td>{card.cardsCount}</td>
                                 <td>{card.updated}</td>
                                 <td></td>
                                 <td>
-                                    <button onClick={() => {
+                                    <button className='delete_btn' onClick={() => {
                                         dispatch(deleteCardsPackTC(card._id))
                                     }}>delete
                                     </button>
@@ -98,7 +101,7 @@ export const Packs = () => {
                                         dispatch(updateCardsPackTC({_id: card._id, name: "Vasya"}))
                                     }}>update
                                     </button>
-                                    <NavLink to={'/cards'}>cards</NavLink>
+                                    <NavLink to={'/cards/' + card._id}>cards</NavLink>
                                 </td>
                             </tr>)
                         }

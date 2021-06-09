@@ -1,0 +1,23 @@
+.wrapper_cards {
+  margin-top: 50px;
+  #table {
+    width: 100%;
+  }
+  .row0 {
+    margin-right: 100px;
+  }
+  button {
+    color: #fff;
+    background-color: #0c9fd1;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+  button:hover {
+    background-color: #095976;
+    cursor: pointer;
+  }
+  .delete_btn {
+    margin-right: 4px;
+  }
+}
+

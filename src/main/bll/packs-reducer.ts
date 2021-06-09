@@ -51,7 +51,7 @@ export const deletePackAC = (id: string) => ({type: PacksEnum.DELETE_PACK, id} a
 // THUNK CREATORS
 export const setPacksTC = (pageNumber?: number) => (dispatch: ThunkDispatch<RootStoreType, unknown, ActionType | AuthActionsTypes>, getState: () => RootStoreType) => {
     dispatch(loadingSpinner(true))
-    const {pageCount} = getState().decks
+    const pageCount = getState().decks.pageCount
     const page = getState().decks.page
     PackAPI.getPacks(page, pageCount)
         .then((res) => {
@@ -78,15 +78,15 @@ export const addCardsPackTC = () => (dispatch: ThunkDispatch<RootStoreType, unkn
             dispatch(loadingSpinner(false))
         })
 }
-
 export const deleteCardsPackTC = (id: string) => (dispatch: ThunkDispatch<RootStoreType, unknown, ActionType | AuthActionsTypes>) => {
     dispatch(loadingSpinner(true))
     PackAPI.deletePack(id)
         .then((res) => {
-            dispatch(deletePackAC(res.data.deletedCardsPack._id))
+            dispatch(deletePackAC(id)) // res.data.newCardsPack._id, вчера так работала
         })
         .catch((e) => {
-            const error = e.response.data.error
+            const error = e.message
+            // const error = e.response.data.error   было раньше вот так написанно, и работало
             dispatch(deletePackAC(error))
             alert(error)
         })

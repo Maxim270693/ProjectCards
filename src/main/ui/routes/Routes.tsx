@@ -35,7 +35,7 @@ function Routes() {
                 <Route path={PATH.RECOVERY} render={() => <RecoveryPass />}/>
                 <Route path={PATH.TESTPAGE} render={() => <TestPage />}/>
                 <Route path={PATH.PACKS} render={() => <Packs />}/>
-                <Route path={PATH.CARDS} render={() => <Cards />}/>
+                <Route path={PATH.CARDS + '/:id'} render={() => <Cards />}/>
                 <Route render={() => <Error404 />}/>
             </Switch>
         </div>

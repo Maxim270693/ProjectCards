@@ -1,10 +1,10 @@
-
-
 .wrapper_packs{
-  margin-top: 70px;
+  margin-top: 50px;
+  height: 100vh;
   h4{
     padding: 7px 0;
     margin: 0;
+    text-shadow: 2px 3px 10px;
   }
   #simple-board {
     width: 100%;
@@ -26,6 +26,19 @@
     border-radius: 7px;
     background-color: lavender;
     cursor: pointer;
+  }
+  button {
+    color: #fff;
+    background-color: #0c9fd1;
+    border-radius: 5px;
+    font-weight: 600;
+  }
+  button:hover {
+    background-color: #095976;
+    cursor: pointer;
+  }
+  .delete_btn {
+    margin-right: 4px;
   }
   .btn_pack {
     width: 130px;
@@ -70,26 +83,26 @@
 
 /* Button pointing left */
 
-button.back {
-  text-align: right;
-  padding-right: 12px;
-  box-sizing: border-box;
-}
-button.back:after {
-  content: "";
-  width: 0;
-  height: 0;
-  display: block;
-  border-top: 20px solid #187dbc;
-  border-bottom: 20px solid #187dbc;
-  border-right: 16px solid transparent;
-  border-left: 20px solid #187dbc;
-  position: absolute;
-  opacity: 0.6;
-  left: 0;
-  top: 0;
-  border-radius: 5px 0 0 5px;
-}
+//button.back {
+//  text-align: right;
+//  padding-right: 12px;
+//  box-sizing: border-box;
+//}
+//button.back:after {
+//  content: "";
+//  width: 0;
+//  height: 0;
+//  display: block;
+//  border-top: 20px solid #187dbc;
+//  border-bottom: 20px solid #187dbc;
+//  border-right: 16px solid transparent;
+//  border-left: 20px solid #187dbc;
+//  position: absolute;
+//  opacity: 0.6;
+//  left: 0;
+//  top: 0;
+//  border-radius: 5px 0 0 5px;
+//}
 
 
 

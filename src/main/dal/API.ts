@@ -1,8 +1,9 @@
 import axios from "axios"
+import {CardsStateType} from "../bll/cards-reducer";
 
 const instanceLocal = axios.create({
-    //baseURL: 'http://localhost:7542/2.0/',
-    baseURL: 'https://neko-back.herokuapp.com/2.0',
+    baseURL: 'http://localhost:7542/2.0/',
+    //baseURL: 'https://neko-back.herokuapp.com/2.0',
     withCredentials: true
 })
 
@@ -83,33 +84,65 @@ type NewCardsPackType = {
     tokenDeathTime: number
 }
 
-type DeleteCardsPackType = {
-    deletedCardsPack: DeleteCardsPackPropsType
-    token: string
-    tokenDeathTime: number
+export type PutCardsPackType = {
+    _id: string
+    name?: string
 }
 
-type DeleteCardsPackPropsType = {
-    cardsCount: number
+export type CardsType = {
+    answer: string
+    question: string
+    cardsPack_id: string
+    grade: number
+    rating: number
+    shots: number
+    type: string
+    user_id: string
+    created: string
+    updated: string
+    __v: number
+    _id: string
+}
+
+export type NewCardType = {
+    cardsPack_id: string
+    question: string
+    answer: string
+    grade?: number
+    shots?: number
+    rating?: number
+    answerImg?: string
+    questionImg?: string
+    questionVideo?: string
+    answerVideo?: string
+    type?: string
+}
+
+export type UpdateCardType = {
+    _id: string
+    question?: string
+    answer?: string
+}
+
+export type UpdateResponseType = {
+    answer: string
+    answerImg: string
+    answerVideo: string
+    cardsPack_id: string
+    comments: string
     created: string
     grade: number
     more_id: string
-    name: string
-    path: string
-    private: boolean
+    question: string
+    questionImg: string
+    questionVideo: string
     rating: number
     shots: number
     type: string
     updated: string
     user_id: string
-    user_name: string
     __v: number
     _id: string
-}
-
-export type PutCardsPackType = {
-    _id: string
-    name?: string
 }
 
 
@@ -145,7 +178,6 @@ export const authAPI = {
         return instanceLocal.post<AuthResponseType>('auth/set-new-password', newPasswordObj).then(res => res.data)
     }
 }
-
 export const PackAPI = {
     getPacks(page: number, pageCount: number) {
         return instanceLocal.get<CardsResponseType>(`/cards/pack?page=${page}&pageCount=${pageCount}`)
@@ -153,10 +185,24 @@ export const PackAPI = {
     postPack(cardsPack: CardPackType) {
         return instanceLocal.post<NewCardsPackType>("/cards/pack", {cardsPack})
     },
-    deletePack(id:string) {
-        return instanceLocal.delete<DeleteCardsPackType>(`/cards/pack?id=${id}`)
+    deletePack(id: string) {
+        return instanceLocal.delete<NewCardsPackType>(`/cards/pack?id=${id}`)
     },
     updatePack(cardsPack: PutCardsPackType) {
         return instanceLocal.put("/cards/pack", {cardsPack})
+    }
+}
+export const cardAPI = {
+    getCards(cardsPack_id: string) {
+        return instanceLocal.get<CardsStateType>(`/cards/card?cardsPack_id=${cardsPack_id}`)
+    },
+    postCard(card: NewCardType) {
+        return instanceLocal.post<{ newCard: CardsType }>("/cards/card", {card})
+    },
+    deleteCard(id: string) {
+        return instanceLocal.delete(`/cards/card?id=${id}`)  // <{ deleteCardsPack: CardsType }>
+    },
+    updateCard(card: UpdateCardType) {
+        return instanceLocal.put<UpdateResponseType>("/cards/card", {card})
     }
 }

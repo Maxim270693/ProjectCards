@@ -74,9 +74,7 @@ export const registerTC = (data: AuthObjType): ThunkType =>
         dispatch(loadingSpinner(true))
         try {
             const res = await authAPI.signUp(data)
-            // const {name, _id} = res.data.addedUser
             dispatch(registerAC( true))
-            // dispatch(authentication(true))
         } catch (e) {
             alert(e.response.data.error)
         } finally {
